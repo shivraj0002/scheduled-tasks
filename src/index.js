@@ -6,13 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { StyledEngineProvider } from "@mui/material";
+import TimingsContextProvider from "./contexts/TimiingsContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <LocalizationProvider dateAdapter={AdapterMoment}>
       <StyledEngineProvider injectFirst>
-        <App />
+        <TimingsContextProvider>
+          <App />
+        </TimingsContextProvider>
       </StyledEngineProvider>
     </LocalizationProvider>
   </React.StrictMode>

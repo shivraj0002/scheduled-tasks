@@ -1,7 +1,10 @@
 import { Box, Checkbox, Tooltip } from "@mui/joy";
-import React from "react";
+import moment from "moment";
+import React, { useContext } from "react";
+import { TimingsContext } from "../contexts/TimiingsContextProvider";
 
-const CheckTask = ({task}) => {
+const CheckTask = ({ task }) => {
+  const context = useContext(TimingsContext);
   return (
     <>
       <Box
@@ -15,7 +18,12 @@ const CheckTask = ({task}) => {
         title={`id: ${task.id}, name: ${task.name}, date: ${task.date}, time: ${task.time}`}
         arrow
       >
-        <Checkbox variant="outlined" label={task.date} />
+        <Checkbox
+          variant="outlined"
+          label={`${moment(task.date)
+            .tz(context.timeZone)
+            .format("HH.mm.ss a")}`}
+        />
       </Box>
     </>
   );

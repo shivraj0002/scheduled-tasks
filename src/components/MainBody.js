@@ -12,18 +12,11 @@ const days = [
   { day: "Saturday", dayCode: 6 },
 ];
 
-const MainBody = ({ startDate, endDate, timeZone, tasks }) => {
+const MainBody = () => {
   return (
     <Stack divider={<Divider orientation="horizontal" />}>
       {days.map((day) => (
-        <CalenderDays
-          key={day.dayCode}
-          day={day}
-          startDate={startDate}
-          endDate={endDate}
-          timeZone={timeZone}
-          tasks={tasks}
-        />
+        <CalenderDays key={day.dayCode} day={day} />
       ))}
     </Stack>
   );

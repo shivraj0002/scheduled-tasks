@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "../styles/Navbar.module.css";
 import { Box, Grid } from "@mui/material";
 
 import CurrentTimer from "./CurrentTimer";
 import { Button } from "@mui/joy";
-const Navbar = ({
-  nextWeekClick,
-  previousWeekClick,
-  timeZone,
-  selectThisWeek,
-}) => {
+import { TimingsContext } from "../contexts/TimiingsContextProvider";
+const Navbar = () => {
+  const context = useContext(TimingsContext);
 
   return (
     <Box width={"100%"}>
@@ -22,18 +19,30 @@ const Navbar = ({
       >
         <Grid container>
           <Grid item xs={2} display={"flex"} justifyContent={"center"}>
-            <Button variant="outlined" size="sm" onClick={previousWeekClick}>
+            <Button
+              variant="outlined"
+              size="sm"
+              onClick={context.previousWeekClick}
+            >
               Privious Week
             </Button>
           </Grid>
           <Grid item xs={2} display={"flex"} justifyContent={"center"}>
-            <Button variant="outlined" size="sm" onClick={selectThisWeek}>
-              <CurrentTimer timeZone={timeZone} />
+            <Button
+              variant="outlined"
+              size="sm"
+              onClick={context.selectThisWeek}
+            >
+              <CurrentTimer timeZone={context.timeZone} />
             </Button>
           </Grid>
           <Grid item xs={6}></Grid>
           <Grid item xs={2} display={"flex"} justifyContent={"center"}>
-            <Button variant="outlined" size="sm" onClick={nextWeekClick}>
+            <Button
+              variant="outlined"
+              size="sm"
+              onClick={context.nextWeekClick}
+            >
               Next Week
             </Button>
           </Grid>
